@@ -5,7 +5,7 @@ close ALL;
 %f = [1 0 -1];  %funcion a evaluar
 f = [1 -6 11 -6];
 ejes=[-3, 10, -2, 3]; %ejes para las graficas
-LR=0.1;   %learning rate
+LR=0.01;   %learning rate
 n=1; %numero de nueronas
 ParametroCambio = 0.5; %parametro para la funcion de desatasque
 
@@ -22,10 +22,15 @@ while ~CheckPattern(Input,Target,W) && Epoc<MaxEpoc
     %Guardo la energia para saber si se ha estancado, si la energia
     %permanece constante durante una epoca esta estancada
     EnergiaAnterior=EnergiaTotal(Input,Target,W);
+    
+    
+    
     %itero a traves de todos los patrones (p)
     for p=1:size(Input,1)  
         %todas estas funciones se encargan de graficar
         %----------------------------------------------
+        
+        disp(W(3,:)./W(1,:));
         GrapNeuron(W,1)                                                    
         GrapDatos(Input,Target,f,p,1,ejes)                                 
         Real=mode((((Input*W)>=0)*2-1),2);                                 
@@ -38,7 +43,7 @@ while ~CheckPattern(Input,Target,W) && Epoc<MaxEpoc
         %calculo el output de un patron y si esque es incorrecto muevo una
         %neurona
         Output=Input(p,:)*W;
-        if mode(Output,2)~=Target(p)
+        if mode((Output>0)*2-1,2)~=Target(p)
             %cambio todos los pesos de cada neurona y me quedo con el
             %cambio que produzca la minima energia 
             W_anterior=W;
@@ -61,8 +66,8 @@ while ~CheckPattern(Input,Target,W) && Epoc<MaxEpoc
         Energy=[Energy EnergiaTotal(Input,Target,W)];
     end
     %si la energia se ha estancado la desestanco 
-    if(EnergiaAnterior==EnergiaTotal(Input,Target,W))
-         W=QuitarMin(W,ParametroCambio);
-    end
+%     if(EnergiaAnterior==EnergiaTotal(Input,Target,W))
+%          W=QuitarMin(W,ParametroCambio);
+%     end
     Epoc=Epoc+1;
 end
