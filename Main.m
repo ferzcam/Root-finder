@@ -3,7 +3,11 @@ clear;
 clc;
 close ALL;
 %f = [1 0 -1];  %funcion a evaluar
-f = [1 -6 11 -6];
+%f = [1 0 -1];  %funcion a evaluar
+%f = [1 -6 11 -6];
+%f = [1 0 -1 0];
+%f = [1 0 -5 0 4];
+f = [1 -1.5 -5 7.5 4 -6];
 ejes=[-3, 10, -2, 3]; %ejes para las graficas
 LR=0.1;   %learning rate
 n=1; %numero de nueronas
