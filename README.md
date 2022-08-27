@@ -1,5 +1,5 @@
 # Successive Adaptive Linear Neural Modeling for Equidistant Real Roots Finding
 
-**Project Page:** [zosov.github.io/portfolio/neural_model/](https://zosov.github.io/portfolio/neural_model/)
+[**Project Page**](https://zosov.github.io/portfolio/neural_model/)
 
 This work aims to implement a model to find equidistant real roots using a Successive Adaptive Linear Neural Modeling, consisting of two models: a Self Organized Map (SOM) and an Adaptative Linear Neuron (Adaline). A SOM model has been used with a new neighborhood function and a physical distance. The SOM model can delimit the areas where a single root exists, dividing the task at hand into sub-processes and reducing the complexity. Then, we defined a neural model based on single Adaline neurons with a pocket. This model is applied sequentially to each pair of regions to find the real root values with reduced precision. Finally, several experiments were done considering CPU time, relative error, the distance between the roots, and polynomial degrees. The results show that the time complexity grows in a logarithmic way. Also, the error does not increase at a higher rate than the polynomial degree or the root distance.
